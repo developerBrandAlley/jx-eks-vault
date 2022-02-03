@@ -1,0 +1,22 @@
+apiVersion: jenkins.io/v1
+kind: SourceRepository
+metadata:
+  creationTimestamp: null
+  labels:
+    owner: BrandAlleyUK
+    provider: github
+    repository: m2-helm
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  name: brandalleyuk-m2-helm
+  namespace: jx
+spec:
+  httpCloneURL: https://github.com/BrandAlleyUK/m2-helm.git
+  org: BrandAlleyUK
+  provider: https://github.com
+  providerKind: github
+  providerName: github
+  repo: m2-helm
+  scheduler:
+    kind: ""
+    name: in-repo
+  url: https://github.com/BrandAlleyUK/m2-helm
