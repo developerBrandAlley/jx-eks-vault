@@ -1,0 +1,11 @@
+filepath: ""
+namespace: jx-staging
+repositories:
+- name: dev
+  url: http://chartmuseum-jx.build.brandalleydevelopment.co.uk
+releases:
+- chart: dev/m2-helm
+  version: 0.0.1
+  name: m2-helm
+templates: {}
+renderedvalues: {}
