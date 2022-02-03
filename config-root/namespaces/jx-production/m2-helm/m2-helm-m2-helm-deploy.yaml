@@ -1,0 +1,60 @@
+# Source: m2-helm/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: m2-helm-m2-helm
+  labels:
+    draft: draft-app
+    chart: "m2-helm-0.0.1"
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  annotations:
+    meta.helm.sh/release-name: 'm2-helm'
+    wave.pusher.com/update-on-config-change: 'true'
+  namespace: jx-production
+spec:
+  selector:
+    matchLabels:
+      app: m2-helm-m2-helm
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        draft: draft-app
+        app: m2-helm-m2-helm
+    spec:
+      serviceAccountName: m2-helm-m2-helm
+      containers:
+        - name: m2-helm
+          image: "511353309127.dkr.ecr.eu-west-2.amazonaws.com/brandalleyuk/m2-helm:0.0.1"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: VERSION
+              value: 0.0.1
+          envFrom: null
+          ports:
+            - name: http
+              containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 400m
+              memory: 256Mi
+            requests:
+              cpu: 200m
+              memory: 128Mi
+      terminationGracePeriodSeconds:
+      imagePullSecrets:
