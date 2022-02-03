@@ -1,0 +1,20 @@
+# Source: m2-helm/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: m2-helm
+  labels:
+    chart: "m2-helm-0.0.1"
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+  annotations:
+    meta.helm.sh/release-name: 'm2-helm'
+  namespace: jx-staging
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: m2-helm-m2-helm

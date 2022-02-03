@@ -1,0 +1,22 @@
+# Source: m2-helm/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    meta.helm.sh/release-name: 'm2-helm'
+  name: m2-helm
+  namespace: jx-staging
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: ImplementationSpecific
+            backend:
+              service:
+                name: m2-helm
+                port:
+                  number: 80
+      host: m2-helm-jx-staging.build.brandalleydevelopment.co.uk

@@ -230,3 +230,17 @@
     repositoryUrl: https://cdfoundation.github.io/tekton-helm-chart
     resourcePath: config-root/namespaces/tekton-pipelines/tekton-pipeline
     version: 0.27.2
+- namespace: jx-staging
+  path: helmfiles/jx-staging/helmfile.yaml
+  releases:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    description: A Helm chart for Kubernetes
+    firstDeployed: "2022-02-03T14:41:26Z"
+    icon: https://raw.githubusercontent.com/cdfoundation/artwork/master/jenkinsx/icon/color/jenkinsx-icon-color.png
+    lastDeployed: "2022-02-03T14:41:26Z"
+    name: m2-helm
+    repositoryName: dev
+    repositoryUrl: http://chartmuseum-jx.build.brandalleydevelopment.co.uk
+    resourcePath: config-root/namespaces/jx-staging/m2-helm
+    version: 0.0.1
