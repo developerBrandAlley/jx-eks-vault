@@ -1,0 +1,10 @@
+# Source: m2-helm/templates/sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: m2-helm-m2-helm
+  annotations:
+    meta.helm.sh/release-name: 'm2-helm'
+  namespace: jx-staging
+  labels:
+    gitops.jenkins-x.io/pipeline: 'namespaces'
